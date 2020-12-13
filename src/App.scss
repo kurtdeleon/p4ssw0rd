@@ -1,0 +1,98 @@
+@import "styles/layouts";
+@import "styles/include-media";
+
+#app {
+  width: 40%;
+  min-width: 600px;
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 4px;
+  margin: auto;
+}
+
+#title-bar {
+  @include flex-row;
+  align-items: center;
+  padding: 10px;
+  color: #eee;
+  > span {
+    margin-right: auto;
+  }
+  .check-trail {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 25px;
+    background: rgb(80, 80, 80);
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  .check-handler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background: rgb(50, 50, 50);
+    transition: all 0.5s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    &:before {
+      content: "\1F319";
+      color: white;
+      font-size: auto;
+      font-weight: bold;
+    }
+  }
+  input {
+    &[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+      &:checked + .check-trail {
+        background: #ddd;
+        .check-handler {
+          margin-left: 50%;
+          background: #fff;
+          &::before {
+            color: black;
+            content: "\263C";
+          }
+        }
+      }
+    }
+  }
+}
+
+#footer {
+  @include flex-row;
+  align-content: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+  svg {
+    width: 20px;
+    height: auto;
+    fill: #eee;
+  }
+}
+
+@include media("<=tablet") {
+  #app {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.button {
+  &--main {
+    margin: 10px 0;
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    color: rgb(241, 250, 238);
+    background-color: rgba(70, 70, 70, 1);
+    &:hover {
+      background-color: rgba(70, 70, 70, 0.75);
+    }
+  }
+}

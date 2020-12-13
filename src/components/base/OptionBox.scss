@@ -1,0 +1,64 @@
+@import "src/styles/layouts";
+@import "src/styles/include-media";
+@import "src/styles/utilities";
+
+.setting {
+  background-color: rgba(100, 100, 100, 1);
+  position: relative;
+  margin-bottom: 10px;
+  &--option {
+    border-radius: 0;
+    padding: 8px 12px;
+    @include noselect;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(100, 100, 100, 0.5);
+    }
+    > input {
+      cursor: pointer;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      &:checked {
+        & ~ .checkmark:before {
+          content: "\2716";
+          font-size: 13px;
+        }
+      }
+      &:indeterminate {
+        & ~ .checkmark:before {
+          content: "\25AC";
+          font-size: 11px;
+        }
+      }
+    }
+    .checkmark {
+      width: 16px;
+      height: 16px;
+      background-color: #eee;
+      text-align: center;
+      &:before {
+        color: #161616;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+    > label {
+      @include flex-column();
+      cursor: pointer;
+      margin-right: auto;
+      font-size: small;
+      > span:last-child {
+        opacity: 0.5;
+      }
+    }
+  }
+}

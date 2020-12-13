@@ -1,0 +1,57 @@
+@import "src/styles/layouts";
+@import "src/styles/include-media";
+@import "src/styles/utilities";
+
+.hibp-container {
+  @include noselect;
+  @include flex-column();
+  background-color: rgb(100, 100, 100);
+  padding: 10px 15px;
+  font-size: small;
+  cursor: pointer;
+  &--safe {
+    border-left: 2px solid #53ff53;
+  }
+  &--unsafe {
+    border-left: 2px solid red;
+  }
+  &--unverified,
+  &--loading {
+    border-left: 2px solid yellow;
+  }
+  .message {
+    flex: 1;
+    margin: 10px 0;
+  }
+  .instructions {
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-size: x-small;
+  }
+  > div.status {
+    @include flex-row();
+    align-items: center;
+    &--safe {
+      color: #53ff53;
+    }
+    &--unsafe {
+      color: red;
+    }
+    &--unverified,
+    &--loading {
+      color: yellow;
+    }
+    > span {
+      &:first-child {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      &:last-child {
+        font-style: italic;
+        opacity: 0.5;
+        margin-left: auto;
+        color: white;
+      }
+    }
+  }
+}

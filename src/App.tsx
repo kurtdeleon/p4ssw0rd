@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useCallback } from "react";
+import PasswordGenerator from "src/components/PasswordGenerator";
+import { ReactComponent as Github } from "src/assets/github.svg";
+import "./App.scss";
 
-function App() {
+const App: React.FC = () => {
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+
+  const toggleTheme = useCallback(() => {
+    setDarkMode((darkMode) => !darkMode);
+  }, [darkMode]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app">
+      <div id="title-bar">
+        <span className="code">p4ssw0rd</span>
+        {/* <input id="chck" type="checkbox" onClick={toggleTheme} />
+        <label htmlFor="chck" className="check-trail">
+          <span className="check-handler"></span>
+        </label> */}
+      </div>
+      <PasswordGenerator />
+      <div id="footer">
+        <Github />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
