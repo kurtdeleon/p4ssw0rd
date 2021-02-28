@@ -74,6 +74,13 @@
     height: auto;
     fill: #eee;
   }
+  a {
+    text-decoration: none;
+    transition: 0.5s ease;
+    &:hover {
+      opacity: 50%;
+    }
+  }
 }
 
 @include media("<=tablet") {
